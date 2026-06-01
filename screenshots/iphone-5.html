@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=393">
+<title>OptimoVPN - Premium Unlocked</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 393px;
+    height: 852px;
+    overflow: hidden;
+    font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    background: linear-gradient(160deg, #0D1228 0%, #060A18 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blob { position: absolute; border-radius: 50%; filter: blur(65px); pointer-events: none; }
+  .blob-1 {
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(255,208,0,0.14) 0%, transparent 70%);
+    top: -80px; left: -80px;
+  }
+  .blob-2 {
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(97,133,255,0.2) 0%, transparent 70%);
+    top: 80px; right: -70px;
+  }
+  .blob-3 {
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(255,208,0,0.1) 0%, transparent 70%);
+    bottom: 60px; right: -30px;
+  }
+  .blob-4 {
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(97,133,255,0.12) 0%, transparent 70%);
+    bottom: 100px; left: -20px;
+  }
+
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .star { position: absolute; width: 2px; height: 2px; background: rgba(255,255,255,0.45); border-radius: 50%; }
+
+  .header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 44px 24px 0;
+    width: 100%;
+  }
+  .headline {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(255,208,0,0.35);
+  }
+  .subtitle {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.62);
+    margin-top: 8px;
+    letter-spacing: 0.1px;
+    line-height: 1.4;
+  }
+
+  .phone-wrapper {
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .phone-frame {
+    width: 244px;
+    height: 496px;
+    background: #080D1C;
+    border-radius: 36px;
+    border: 1.5px solid rgba(255,208,0,0.3);
+    box-shadow:
+      0 0 0 6px rgba(255,208,0,0.06),
+      0 30px 80px rgba(0,0,0,0.7),
+      0 0 50px rgba(255,208,0,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .dynamic-island {
+    width: 72px;
+    height: 22px;
+    background: #000;
+    border-radius: 20px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
+  .phone-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 12px 12px;
+  }
+  .phone-status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 10px;
+    padding: 0 2px;
+    flex-shrink: 0;
+  }
+
+  /* Premium header */
+  .premium-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+  .crown-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,208,0,0.3) 0%, rgba(255,160,0,0.2) 100%);
+    border: 1.5px solid rgba(255,208,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 6px;
+    box-shadow: 0 0 18px rgba(255,208,0,0.25);
+  }
+  .premium-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.3px;
+  }
+  .premium-sub {
+    font-size: 8px;
+    color: rgba(255,208,0,0.7);
+    margin-top: 2px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  /* Plan cards */
+  .plan-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+  .plan-card {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 9px 11px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .plan-card.featured {
+    background: rgba(255,208,0,0.07);
+    border-color: rgba(255,208,0,0.35);
+  }
+  .popular-badge {
+    position: absolute;
+    top: 0; right: 0;
+    background: #FFD000;
+    color: #0D1228;
+    font-size: 6.5px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 0 0 0 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .plan-left {}
+  .plan-name {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.88);
+  }
+  .plan-desc {
+    font-size: 7.5px;
+    color: rgba(255,255,255,0.38);
+    margin-top: 1px;
+  }
+  .plan-price {
+    text-align: right;
+  }
+  .price-amount {
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+  }
+  .plan-card.featured .price-amount {
+    color: #FFD000;
+  }
+  .price-period {
+    font-size: 7px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* CTA button */
+  .cta-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #FFD000 0%, #FFA500 100%);
+    border-radius: 12px;
+    padding: 11px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #0D1228;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 20px rgba(255,208,0,0.3);
+    flex-shrink: 0;
+  }
+  .cta-sub {
+    font-size: 7.5px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 5px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .feature-tag {
+    position: relative;
+    z-index: 10;
+    margin-top: 14px;
+    background: linear-gradient(90deg, rgba(255,208,0,0.2) 0%, rgba(97,133,255,0.12) 100%);
+    border: 1px solid rgba(255,208,0,0.4);
+    border-radius: 30px;
+    padding: 7px 22px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <div class="stars">
+    <div class="star" style="top:6%;left:20%"></div>
+    <div class="star" style="top:13%;left:75%"></div>
+    <div class="star" style="top:21%;left:44%"></div>
+    <div class="star" style="top:30%;left:88%"></div>
+    <div class="star" style="top:42%;left:7%"></div>
+    <div class="star" style="top:57%;left:91%"></div>
+    <div class="star" style="top:66%;left:32%"></div>
+    <div class="star" style="top:76%;left:65%"></div>
+    <div class="star" style="top:83%;left:14%"></div>
+    <div class="star" style="top:91%;left:52%"></div>
+    <div class="star" style="top:8%;left:55%;width:3px;height:3px;background:rgba(255,208,0,0.55)"></div>
+    <div class="star" style="top:74%;left:84%;width:3px;height:3px;background:rgba(97,133,255,0.5)"></div>
+  </div>
+
+  <div class="header">
+    <div class="headline">Premium<br>Unlocked</div>
+    <div class="subtitle">Start your 7-day free trial today</div>
+  </div>
+
+  <div class="phone-wrapper">
+    <div class="phone-frame">
+      <div class="dynamic-island"></div>
+      <div class="phone-content">
+
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span>●●●</span>
+        </div>
+
+        <div class="premium-header">
+          <div class="crown-wrap">👑</div>
+          <div class="premium-title">OptimoVPN Premium</div>
+          <div class="premium-sub">Unlock All Features</div>
+        </div>
+
+        <div class="plan-cards">
+
+          <div class="plan-card">
+            <div class="plan-left">
+              <div class="plan-name">Monthly</div>
+              <div class="plan-desc">Billed monthly</div>
+            </div>
+            <div class="plan-price">
+              <div class="price-amount">$4.99</div>
+              <div class="price-period">/ month</div>
+            </div>
+          </div>
+
+          <div class="plan-card featured">
+            <div class="popular-badge">Most Popular</div>
+            <div class="plan-left">
+              <div class="plan-name">Yearly</div>
+              <div class="plan-desc">Save 67%</div>
+            </div>
+            <div class="plan-price">
+              <div class="price-amount">$1.67</div>
+              <div class="price-period">/ month</div>
+            </div>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-left">
+              <div class="plan-name">Lifetime</div>
+              <div class="plan-desc">One-time payment</div>
+            </div>
+            <div class="plan-price">
+              <div class="price-amount">$29.99</div>
+              <div class="price-period">forever</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="cta-btn">Start Free Trial — 7 Days</div>
+        <div class="cta-sub">Cancel anytime • No commitment</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-tag">7-Day Free Trial</div>
+
+</body>
+</html>

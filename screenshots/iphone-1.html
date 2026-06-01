@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=393">
+<title>OptimoVPN - Your Digital Shield</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 393px;
+    height: 852px;
+    overflow: hidden;
+    font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    background: linear-gradient(160deg, #0D1228 0%, #060A18 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Cloud glow blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .blob-1 {
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(97,133,255,0.22) 0%, transparent 70%);
+    top: -60px; left: -80px;
+  }
+  .blob-2 {
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(47,212,135,0.13) 0%, transparent 70%);
+    top: 120px; right: -60px;
+  }
+  .blob-3 {
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(97,133,255,0.15) 0%, transparent 70%);
+    bottom: 100px; left: 30px;
+  }
+  .blob-4 {
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(255,208,0,0.07) 0%, transparent 70%);
+    bottom: 180px; right: 20px;
+  }
+
+  /* Star particles */
+  .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+  }
+
+  /* Header text */
+  .header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 44px 24px 0;
+    width: 100%;
+  }
+  .headline {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(97,133,255,0.5);
+  }
+  .subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    letter-spacing: 0.1px;
+    line-height: 1.4;
+  }
+
+  /* Phone frame */
+  .phone-wrapper {
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .phone-frame {
+    width: 240px;
+    height: 480px;
+    background: #0A0E1F;
+    border-radius: 36px;
+    border: 1.5px solid rgba(97,133,255,0.35);
+    box-shadow:
+      0 0 0 6px rgba(97,133,255,0.08),
+      0 30px 80px rgba(0,0,0,0.7),
+      0 0 60px rgba(97,133,255,0.12),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Dynamic island */
+  .dynamic-island {
+    width: 72px;
+    height: 22px;
+    background: #000;
+    border-radius: 20px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
+
+  /* Phone content */
+  .phone-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 14px 10px;
+    position: relative;
+  }
+
+  /* Status bar inside phone */
+  .phone-status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+
+  /* Status pill */
+  .status-pill {
+    background: rgba(255,59,48,0.15);
+    border: 1px solid rgba(255,59,48,0.4);
+    color: #FF3B30;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Power button circle */
+  .power-btn-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .power-ring-outer {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(97,133,255,0.08) 0%, transparent 70%);
+    border: 1.5px dashed rgba(97,133,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .power-ring-mid {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: rgba(97,133,255,0.05);
+    border: 1.5px solid rgba(97,133,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .power-btn {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, rgba(255,59,48,0.25) 0%, rgba(180,30,20,0.35) 100%);
+    border: 1.5px solid rgba(255,59,48,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 16px rgba(255,59,48,0.2);
+  }
+  .power-icon {
+    width: 28px;
+    height: 28px;
+    color: rgba(255,59,48,0.9);
+  }
+  .connect-hint {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 10px;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+
+  /* Server card at bottom of phone */
+  .server-card {
+    width: 100%;
+    background: rgba(97,133,255,0.07);
+    border: 1px solid rgba(97,133,255,0.18);
+    border-radius: 12px;
+    padding: 9px 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .server-flag {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .server-info {
+    flex: 1;
+  }
+  .server-name {
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.2;
+  }
+  .server-sub {
+    font-size: 7.5px;
+    color: rgba(255,255,255,0.38);
+    margin-top: 1px;
+  }
+  .server-ping {
+    font-size: 8px;
+    font-weight: 600;
+    color: #2FD487;
+  }
+
+  /* Feature tag */
+  .feature-tag {
+    position: relative;
+    z-index: 10;
+    margin-top: 18px;
+    background: linear-gradient(90deg, rgba(97,133,255,0.2) 0%, rgba(47,212,135,0.15) 100%);
+    border: 1px solid rgba(97,133,255,0.35);
+    border-radius: 30px;
+    padding: 7px 22px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Cloud glow blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <!-- Subtle star particles -->
+  <div class="stars">
+    <div class="star" style="top:8%;left:12%"></div>
+    <div class="star" style="top:15%;left:78%"></div>
+    <div class="star" style="top:22%;left:45%"></div>
+    <div class="star" style="top:31%;left:88%"></div>
+    <div class="star" style="top:42%;left:6%"></div>
+    <div class="star" style="top:58%;left:92%"></div>
+    <div class="star" style="top:67%;left:33%"></div>
+    <div class="star" style="top:74%;left:70%"></div>
+    <div class="star" style="top:85%;left:18%"></div>
+    <div class="star" style="top:91%;left:55%"></div>
+    <div class="star" style="top:5%;left:60%"></div>
+    <div class="star" style="top:38%;left:52%;width:3px;height:3px;background:rgba(97,133,255,0.6)"></div>
+    <div class="star" style="top:78%;left:82%;width:3px;height:3px;background:rgba(47,212,135,0.5)"></div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="headline">Your Digital<br>Shield</div>
+    <div class="subtitle">One tap to protect your privacy</div>
+  </div>
+
+  <!-- Phone frame -->
+  <div class="phone-wrapper">
+    <div class="phone-frame">
+      <div class="dynamic-island"></div>
+      <div class="phone-content">
+
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span>●●●</span>
+        </div>
+
+        <div class="status-pill">Korunmuyor</div>
+
+        <div class="power-btn-area">
+          <div class="power-ring-outer">
+            <div class="power-ring-mid">
+              <div class="power-btn">
+                <!-- Power SVG icon -->
+                <svg class="power-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 4V14" stroke="rgba(255,59,48,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M8.5 7.2A9 9 0 1 0 19.5 7.2" stroke="rgba(255,59,48,0.9)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="connect-hint">Güvenli bağlantı için dokunun</div>
+        </div>
+
+        <div class="server-card">
+          <div class="server-flag">🇩🇪</div>
+          <div class="server-info">
+            <div class="server-name">Germany — Frankfurt</div>
+            <div class="server-sub">Otomatik Seçim</div>
+          </div>
+          <div class="server-ping">12 ms</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature tag -->
+  <div class="feature-tag">Free &amp; Premium</div>
+
+</body>
+</html>

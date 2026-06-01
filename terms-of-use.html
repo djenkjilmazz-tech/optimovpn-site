@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use – OptimoVPN</title>
+  <meta name="description" content="OptimoVPN Terms of Use. Read the terms and conditions that govern your use of the OptimoVPN iOS application." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #6185FF;
+      --accent: #2FD487;
+      --bg-deep: #060A18;
+      --bg-base: #0D1228;
+      --bg-card: #111827;
+      --text-primary: #F0F4FF;
+      --text-secondary: #8A9BC8;
+      --text-muted: #4D5E8A;
+      --border: rgba(97, 133, 255, 0.15);
+      --radius: 16px;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--brand); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      background: rgba(6, 10, 24, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--brand), #8B5CF6);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 14px rgba(97, 133, 255, 0.45);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      background: var(--brand);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 50px;
+      font-size: 0.875rem !important;
+      font-weight: 600 !important;
+      transition: background 0.2s, box-shadow 0.2s !important;
+      box-shadow: 0 0 20px rgba(97, 133, 255, 0.35);
+    }
+
+    .nav-cta:hover {
+      background: #7B98FF !important;
+      box-shadow: 0 0 28px rgba(97, 133, 255, 0.55) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 72px 5% 60px;
+      background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-deep) 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 0% 50%, rgba(97, 133, 255, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-header-inner { max-width: 780px; }
+
+    .page-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 14px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .page-header .last-updated {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── CONTENT LAYOUT ── */
+    .content-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 5% 100px;
+    }
+
+    /* ── POLICY SECTIONS ── */
+    .policy-section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .policy-section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(97, 133, 255, 0.12);
+      border: 1px solid rgba(97, 133, 255, 0.25);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+
+    .policy-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul, .policy-section ol {
+      margin: 14px 0;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .policy-section ul li, .policy-section ol li {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .policy-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand);
+      opacity: 0.7;
+    }
+
+    .policy-section ol {
+      counter-reset: ol-counter;
+    }
+
+    .policy-section ol li {
+      counter-increment: ol-counter;
+    }
+
+    .policy-section ol li::before {
+      content: counter(ol-counter) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .policy-section h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 22px 0 10px;
+    }
+
+    .warning-box {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .warning-box p {
+      color: rgba(252, 165, 165, 0.9) !important;
+      font-size: 0.9rem !important;
+      margin: 0 !important;
+      font-weight: 500;
+    }
+
+    .warning-box p strong { color: #FCA5A5; }
+
+    .info-box {
+      background: rgba(97, 133, 255, 0.06);
+      border: 1px solid rgba(97, 133, 255, 0.2);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .info-box p {
+      color: rgba(97, 133, 255, 0.85) !important;
+      font-size: 0.9rem !important;
+      margin: 0 !important;
+    }
+
+    .highlight-box {
+      background: rgba(47, 212, 135, 0.06);
+      border: 1px solid rgba(47, 212, 135, 0.2);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .highlight-box p {
+      color: rgba(47, 212, 135, 0.9) !important;
+      font-size: 0.9rem !important;
+      margin: 0 !important;
+      font-weight: 500;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-top: 20px;
+    }
+
+    .contact-card p {
+      margin-bottom: 6px !important;
+      font-size: 0.9rem !important;
+    }
+
+    .contact-card a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border);
+      padding: 40px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--brand); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(6, 10, 24, 0.98);
+        backdrop-filter: blur(20px);
+        padding: 24px 28px 32px;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+      }
+
+      .nav-links.open .nav-cta { align-self: flex-start; }
+
+      .page-header { padding: 60px 24px 48px; }
+      .content-wrap { padding: 48px 24px 80px; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z" fill="white" fill-opacity="0.9"/>
+          <path d="M9 12l2 2 4-4" stroke="#2FD487" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      OptimoVPN
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="index.html#download" class="nav-cta">Download</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <span class="page-tag">Legal</span>
+      <h1>Terms of Use</h1>
+      <p class="last-updated">Last Updated: June 1, 2025</p>
+    </div>
+  </div>
+
+  <!-- ── CONTENT ── -->
+  <div class="content-wrap">
+
+    <!-- 1. Acceptance of Terms -->
+    <div class="policy-section">
+      <h2><span class="section-num">1</span> Acceptance of Terms</h2>
+      <p>These Terms of Use ("Terms") govern your access to and use of the OptimoVPN iOS application (the "App") and all related services provided by Cenk Yılmaz ("Developer," "we," "us," or "our"). Please read these Terms carefully before using the App.</p>
+      <p>By downloading, installing, or using the App, you confirm that you are at least 13 years of age, have the legal capacity to enter into these Terms, and agree to be bound by them. If you do not agree to these Terms, you must not download or use the App.</p>
+      <p>These Terms are in addition to any terms imposed by the Apple App Store, which also apply to your use of the App. In the event of a conflict, Apple's terms take precedence for matters concerning the App Store platform.</p>
+    </div>
+
+    <!-- 2. Description of Service -->
+    <div class="policy-section">
+      <h2><span class="section-num">2</span> Description of Service</h2>
+      <p>OptimoVPN is a Virtual Private Network (VPN) application for iOS that encrypts your internet traffic and routes it through remote servers to help protect your online privacy. The App is offered in two tiers:</p>
+
+      <h3>2.1 Free Tier (Ad-Supported)</h3>
+      <ul>
+        <li>Available at no charge to download and use.</li>
+        <li>Provides access to a selection of auto-selected VPN servers (up to 5 servers).</li>
+        <li>Includes AES-256 encryption and our no-log policy.</li>
+        <li>Displays advertisements provided by Google AdMob to support the service.</li>
+        <li>Server availability is based on publicly available VPN Gate infrastructure and may vary.</li>
+      </ul>
+
+      <h3>2.2 Premium Tier (Subscription)</h3>
+      <ul>
+        <li>Available via a paid monthly or annual in-app subscription.</li>
+        <li>Provides access to all 30+ servers across the full network.</li>
+        <li>Completely ad-free experience.</li>
+        <li>Priority connection speed and access to premium-tier servers.</li>
+        <li>Includes a 7-day free trial for new subscribers (see Section 5).</li>
+      </ul>
+
+      <p>We reserve the right to modify, suspend, or discontinue any aspect of the service at any time, with or without notice. We are not liable to you or any third party for any such modification, suspension, or discontinuation.</p>
+    </div>
+
+    <!-- 3. Permitted Use -->
+    <div class="policy-section">
+      <h2><span class="section-num">3</span> Permitted Use</h2>
+      <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to download and use the App on Apple-branded devices that you own or control, for your personal, non-commercial use only.</p>
+
+      <p>You may use OptimoVPN to:</p>
+      <ul>
+        <li>Protect your internet traffic from interception on public or untrusted networks (e.g., public Wi-Fi).</li>
+        <li>Enhance your privacy and prevent tracking of your online activity.</li>
+        <li>Access internet content in a manner consistent with applicable law in your jurisdiction.</li>
+        <li>Secure your connection when working remotely or traveling.</li>
+      </ul>
+    </div>
+
+    <!-- 4. Prohibited Activities -->
+    <div class="policy-section">
+      <h2><span class="section-num">4</span> Prohibited Activities</h2>
+      <p>You agree that you will NOT use OptimoVPN for any of the following prohibited activities. Violation of these prohibitions may result in immediate termination of your access to the service and may expose you to civil or criminal liability.</p>
+
+      <div class="warning-box">
+        <p><strong>Important:</strong> OptimoVPN is provided for lawful use only. Using a VPN does not exempt you from the laws of your country or any country whose laws apply to your activities.</p>
+      </div>
+
+      <h3>4.1 Illegal Activities</h3>
+      <ul>
+        <li>Accessing, downloading, distributing, or transmitting any content that is illegal under applicable law, including but not limited to child sexual abuse material (CSAM), content that incites violence or terrorism, or material that infringes intellectual property rights.</li>
+        <li>Engaging in fraud, phishing, identity theft, or any other deceptive practices.</li>
+        <li>Violating any applicable local, national, or international law or regulation.</li>
+      </ul>
+
+      <h3>4.2 Network Attacks and Malicious Use</h3>
+      <ul>
+        <li>Conducting or facilitating denial-of-service (DoS) or distributed denial-of-service (DDoS) attacks against any server, network, or individual.</li>
+        <li>Scanning, probing, or attempting to exploit vulnerabilities in any third-party system or network.</li>
+        <li>Spreading malware, ransomware, viruses, or any other malicious code.</li>
+        <li>Engaging in spam, unsolicited mass messaging, or bot-driven activity.</li>
+        <li>Unauthorized access to computer systems, networks, or accounts (hacking).</li>
+      </ul>
+
+      <h3>4.3 Bypassing Restrictions for Illegal Purposes</h3>
+      <ul>
+        <li>Using the App to circumvent geographic restrictions for the purpose of violating the terms of service of other platforms or engaging in illegal activity.</li>
+        <li>Using the App to evade law enforcement or legal processes.</li>
+      </ul>
+
+      <h3>4.4 Commercial Misuse</h3>
+      <ul>
+        <li>Reselling, sublicensing, or otherwise redistributing access to the VPN service or your Premium subscription without our express written consent.</li>
+        <li>Using the App for any commercial purpose other than as expressly permitted by these Terms.</li>
+        <li>Reverse engineering, decompiling, disassembling, or attempting to derive the source code of the App, except as permitted by applicable law.</li>
+        <li>Sharing your Premium account credentials with others outside of your household.</li>
+      </ul>
+
+      <h3>4.5 Interference with the Service</h3>
+      <ul>
+        <li>Using automated tools (bots, scrapers) to interact with the App in a manner that places unreasonable load on our infrastructure.</li>
+        <li>Attempting to circumvent any security measures, access controls, or usage limits built into the App.</li>
+        <li>Interfering with or disrupting the integrity or performance of our servers or service.</li>
+      </ul>
+    </div>
+
+    <!-- 5. Subscription & Billing -->
+    <div class="policy-section">
+      <h2><span class="section-num">5</span> Subscription &amp; Billing</h2>
+
+      <h3>5.1 Free Trial</h3>
+      <p>New Premium subscribers are eligible for a 7-day free trial. During the free trial period, you will not be charged. The free trial automatically converts to a paid subscription at the end of the trial period unless you cancel at least 24 hours before the trial expires.</p>
+      <p>Free trial eligibility is determined by Apple's App Store and may not be available if you have previously used a free trial for OptimoVPN Premium.</p>
+
+      <h3>5.2 Pricing and Payment</h3>
+      <p>Subscription pricing is displayed in the App at the time of purchase. Prices may vary by region and are displayed in your local currency as determined by the App Store. All payments are processed by Apple through the App Store. We do not directly handle or store your payment information.</p>
+
+      <h3>5.3 Automatic Renewal</h3>
+      <div class="info-box">
+        <p><strong>Auto-Renewal Notice:</strong> OptimoVPN Premium subscriptions automatically renew at the end of each billing period (monthly or annual) unless you cancel at least 24 hours before the end of the current period. Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period.</p>
+      </div>
+
+      <h3>5.4 Cancellation</h3>
+      <p>You may cancel your subscription at any time through the Apple App Store. To cancel:</p>
+      <ol>
+        <li>Open the Settings app on your iPhone or iPad.</li>
+        <li>Tap your Apple ID name at the top.</li>
+        <li>Tap "Subscriptions."</li>
+        <li>Select OptimoVPN Premium and tap "Cancel Subscription."</li>
+      </ol>
+      <p>Cancellation takes effect at the end of the current billing period. You will retain Premium access until the end of the period you have already paid for. We do not offer refunds for the unused portion of a subscription period, except as required by applicable law or at Apple's discretion.</p>
+
+      <h3>5.5 Refunds</h3>
+      <p>All refund requests are handled by Apple in accordance with their App Store refund policies. We do not have the ability to process refunds directly. To request a refund, visit: <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer" style="color: var(--brand);">reportaproblem.apple.com</a></p>
+
+      <h3>5.6 Price Changes</h3>
+      <p>We may change subscription prices from time to time. If we change pricing, we will notify you in advance through the App or by email, and the new price will apply at your next renewal. If you do not agree to the new price, you may cancel before the next renewal.</p>
+    </div>
+
+    <!-- 6. Free Tier & Advertisements -->
+    <div class="policy-section">
+      <h2><span class="section-num">6</span> Free Tier &amp; Advertisements</h2>
+      <p>The free tier of OptimoVPN is provided at no charge and is funded by advertising. By using the free tier, you agree to:</p>
+      <ul>
+        <li>The display of advertisements served by Google AdMob within the App.</li>
+        <li>The collection of certain data by AdMob for advertising purposes, subject to your choices under Apple's App Tracking Transparency framework (see our Privacy Policy).</li>
+      </ul>
+      <p>We reserve the right to change the terms of the free tier at any time, including the number of available servers, connection speed, and the nature and frequency of advertisements. If such changes are material, we will provide notice within the App.</p>
+      <p>The free tier is provided "as is" and we make no guarantees about the availability, speed, or reliability of the free server infrastructure, which relies in part on the VPN Gate public project.</p>
+    </div>
+
+    <!-- 7. Intellectual Property -->
+    <div class="policy-section">
+      <h2><span class="section-num">7</span> Intellectual Property</h2>
+      <p>The App, including its design, code, graphics, user interface, text, and all other content, is owned by or licensed to Cenk Yılmaz and is protected by copyright, trademark, and other intellectual property laws.</p>
+      <ul>
+        <li>The "OptimoVPN" name, logo, and all related marks are proprietary to the Developer. You may not use them without prior written permission.</li>
+        <li>The license granted to you under these Terms is limited to personal, non-commercial use of the App as installed on your device. You receive no ownership interest in the App or its intellectual property.</li>
+        <li>You may not copy, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material in our App, except as incidental to normal use.</li>
+      </ul>
+      <p>If you believe that any content in the App infringes your intellectual property rights, please contact us at the address in Section 11.</p>
+    </div>
+
+    <!-- 8. Disclaimer of Warranties -->
+    <div class="policy-section">
+      <h2><span class="section-num">8</span> Disclaimer of Warranties</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE APP AND ALL SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.</p>
+      <p>We expressly disclaim all warranties, including but not limited to:</p>
+      <ul>
+        <li><strong>Implied warranties of merchantability and fitness for a particular purpose.</strong></li>
+        <li><strong>Warranties of uninterrupted or error-free service.</strong> VPN services may experience outages, and server availability is not guaranteed.</li>
+        <li><strong>Warranties regarding the accuracy or completeness of any content.</strong></li>
+        <li><strong>Warranties that the App will be free from viruses or other harmful components.</strong></li>
+        <li><strong>Warranties that the service will be available in all geographic locations.</strong> Some countries actively block VPN connections, and we cannot guarantee functionality in all jurisdictions.</li>
+      </ul>
+      <p>A VPN is a tool to enhance privacy but is not a guarantee of complete anonymity. No security measure is 100% effective, and you use the App at your own risk.</p>
+    </div>
+
+    <!-- 9. Limitation of Liability -->
+    <div class="policy-section">
+      <h2><span class="section-num">9</span> Limitation of Liability</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL CENK YILMAZ, THE DEVELOPER, OR ANY OF ITS AFFILIATES, LICENSORS, OR SERVICE PROVIDERS BE LIABLE FOR ANY:</p>
+      <ul>
+        <li>Indirect, incidental, special, consequential, or punitive damages;</li>
+        <li>Loss of profits, revenue, data, goodwill, or business opportunities;</li>
+        <li>Damages resulting from unauthorized access to or alteration of your data or transmissions;</li>
+        <li>Damages resulting from any third-party conduct or content;</li>
+        <li>Any other damages arising out of or in connection with your use or inability to use the App.</li>
+      </ul>
+      <p>This limitation applies regardless of the legal theory (contract, tort, negligence, strict liability, or otherwise) and even if we have been advised of the possibility of such damages.</p>
+      <p>In jurisdictions that do not allow the exclusion or limitation of certain warranties or liability, our liability shall be limited to the greatest extent permitted by law. In such jurisdictions, our total aggregate liability to you for all claims arising out of or relating to these Terms or the App shall not exceed the greater of (a) the amount you paid us in the 12 months preceding the claim, or (b) USD $10.00.</p>
+    </div>
+
+    <!-- 10. Governing Law -->
+    <div class="policy-section">
+      <h2><span class="section-num">10</span> Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Turkey, without regard to its conflict of law provisions.</p>
+      <p>Any dispute arising out of or relating to these Terms or the App that cannot be resolved informally shall be subject to the exclusive jurisdiction of the courts of Turkey.</p>
+      <p>Notwithstanding the above, if you are a consumer resident in a jurisdiction that requires disputes to be resolved under your local law, those local consumer protection laws may apply to the extent required by law.</p>
+      <div class="highlight-box">
+        <p><strong>Dispute Resolution:</strong> Before initiating any formal legal proceedings, we encourage you to contact us first at <strong>cengizyilmazturk@gmail.com</strong>. We are committed to resolving disputes fairly and efficiently through direct communication.</p>
+      </div>
+    </div>
+
+    <!-- 11. Contact -->
+    <div class="policy-section">
+      <h2><span class="section-num">11</span> Contact</h2>
+      <p>If you have any questions, concerns, or requests regarding these Terms of Use, please reach out to us:</p>
+      <div class="contact-card">
+        <p><strong>Developer:</strong> Cenk Yılmaz</p>
+        <p><strong>App:</strong> OptimoVPN</p>
+        <p><strong>Email:</strong> <a href="mailto:cengizyilmazturk@gmail.com">cengizyilmazturk@gmail.com</a></p>
+        <p style="margin-top: 14px; color: var(--text-muted) !important; font-size: 0.85rem !important;">We aim to respond to all inquiries within 5 business days.</p>
+      </div>
+      <p style="margin-top: 24px;">By using the App, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use.</p>
+    </div>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-copy">&copy; 2025 OptimoVPN. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="mailto:cengizyilmazturk@gmail.com">cengizyilmazturk@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>

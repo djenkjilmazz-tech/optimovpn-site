@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=820">
+<title>OptimoVPN iPad - Your Privacy, Protected</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 820px;
+    height: 1180px;
+    overflow: hidden;
+    font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    background: linear-gradient(160deg, #0D1228 0%, #060A18 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Cloud glow blobs */
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+  .blob-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(97,133,255,0.2) 0%, transparent 70%);
+    top: -120px; left: -120px;
+  }
+  .blob-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(47,212,135,0.15) 0%, transparent 70%);
+    top: 100px; right: -100px;
+  }
+  .blob-3 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(97,133,255,0.14) 0%, transparent 70%);
+    bottom: -80px; left: 100px;
+  }
+  .blob-4 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(47,212,135,0.1) 0%, transparent 70%);
+    bottom: 100px; right: 0;
+  }
+  .blob-5 {
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(255,208,0,0.07) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+
+  /* Stars */
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .star { position: absolute; width: 2px; height: 2px; background: rgba(255,255,255,0.45); border-radius: 50%; }
+
+  /* Two-column layout */
+  .layout {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 80px 60px;
+    gap: 50px;
+  }
+
+  /* LEFT COLUMN */
+  .left-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6185FF;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow-dot {
+    width: 6px; height: 6px;
+    background: #6185FF;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .headline {
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin-bottom: 20px;
+    text-shadow: 0 0 60px rgba(97,133,255,0.4);
+  }
+  .headline-accent { color: #6185FF; }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    margin-bottom: 40px;
+    max-width: 320px;
+  }
+
+  /* Feature checklist */
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .check-bubble {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(47,212,135,0.15);
+    border: 1px solid rgba(47,212,135,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    color: #2FD487;
+    font-weight: 700;
+  }
+  .feature-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+  }
+
+  /* CTA tag */
+  .cta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, rgba(97,133,255,0.2) 0%, rgba(47,212,135,0.12) 100%);
+    border: 1px solid rgba(97,133,255,0.35);
+    border-radius: 40px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  /* RIGHT COLUMN — Tablet frame */
+  .right-col {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tablet-frame {
+    width: 320px;
+    height: 880px;
+    background: #080D1C;
+    border-radius: 40px;
+    border: 2px solid rgba(97,133,255,0.3);
+    box-shadow:
+      0 0 0 8px rgba(97,133,255,0.06),
+      0 40px 100px rgba(0,0,0,0.75),
+      0 0 80px rgba(97,133,255,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Tablet camera bar */
+  .tablet-top-bar {
+    height: 28px;
+    background: #050810;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .tablet-cam {
+    width: 8px; height: 8px;
+    background: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+
+  .tablet-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 18px 16px;
+    overflow: hidden;
+  }
+  .tablet-status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+    flex-shrink: 0;
+  }
+
+  .status-pill {
+    background: rgba(255,59,48,0.12);
+    border: 1px solid rgba(255,59,48,0.35);
+    color: #FF3B30;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    flex-shrink: 0;
+  }
+
+  .power-btn-area-t {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .power-ring-outer-t {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(97,133,255,0.07) 0%, transparent 70%);
+    border: 2px dashed rgba(97,133,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .power-ring-mid-t {
+    width: 112px; height: 112px;
+    border-radius: 50%;
+    background: rgba(97,133,255,0.04);
+    border: 2px solid rgba(97,133,255,0.14);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .power-btn-t {
+    width: 82px; height: 82px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, rgba(255,59,48,0.22) 0%, rgba(180,30,20,0.32) 100%);
+    border: 2px solid rgba(255,59,48,0.4);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 24px rgba(255,59,48,0.18);
+    font-size: 30px;
+  }
+  .connect-hint-t {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .server-card-t {
+    width: 100%;
+    background: rgba(97,133,255,0.07);
+    border: 1px solid rgba(97,133,255,0.18);
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .srv-flag-t { font-size: 20px; flex-shrink: 0; }
+  .srv-info-t { flex: 1; }
+  .srv-name-t { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .srv-sub-t  { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+  .srv-ping-t { font-size: 11px; font-weight: 700; color: #2FD487; }
+</style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+
+  <div class="stars">
+    <div class="star" style="top:4%;left:8%"></div>
+    <div class="star" style="top:9%;left:45%"></div>
+    <div class="star" style="top:16%;left:78%"></div>
+    <div class="star" style="top:24%;left:22%"></div>
+    <div class="star" style="top:38%;left:92%"></div>
+    <div class="star" style="top:52%;left:3%"></div>
+    <div class="star" style="top:61%;left:58%"></div>
+    <div class="star" style="top:70%;left:82%"></div>
+    <div class="star" style="top:79%;left:15%"></div>
+    <div class="star" style="top:87%;left:68%"></div>
+    <div class="star" style="top:94%;left:36%"></div>
+    <div class="star" style="top:7%;left:33%;width:3px;height:3px;background:rgba(97,133,255,0.55)"></div>
+    <div class="star" style="top:45%;left:70%;width:3px;height:3px;background:rgba(47,212,135,0.5)"></div>
+    <div class="star" style="top:82%;left:48%;width:3px;height:3px;background:rgba(255,208,0,0.45)"></div>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT -->
+    <div class="left-col">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> VPN Security</div>
+      <div class="headline">Your Privacy,<br><span class="headline-accent">Protected</span></div>
+      <div class="subtitle">Enterprise-grade VPN protection in the palm of your hand. Simple, powerful, and completely private.</div>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="check-bubble">✓</div>
+          <div class="feature-text">One-tap connection</div>
+        </div>
+        <div class="feature-item">
+          <div class="check-bubble">✓</div>
+          <div class="feature-text">AES-256 military encryption</div>
+        </div>
+        <div class="feature-item">
+          <div class="check-bubble">✓</div>
+          <div class="feature-text">Zero logs — 100% anonymous</div>
+        </div>
+        <div class="feature-item">
+          <div class="check-bubble">✓</div>
+          <div class="feature-text">30+ countries, 500+ servers</div>
+        </div>
+        <div class="feature-item">
+          <div class="check-bubble">✓</div>
+          <div class="feature-text">Free tier — no credit card needed</div>
+        </div>
+      </div>
+
+      <div class="cta-tag">Free &amp; Premium Plans</div>
+    </div>
+
+    <!-- RIGHT — Tablet frame -->
+    <div class="right-col">
+      <div class="tablet-frame">
+        <div class="tablet-top-bar">
+          <div class="tablet-cam"></div>
+        </div>
+        <div class="tablet-content">
+          <div class="tablet-status-bar">
+            <span>9:41 AM</span>
+            <span>●●● WiFi</span>
+          </div>
+
+          <div class="status-pill">Korunmuyor</div>
+
+          <div class="power-btn-area-t">
+            <div class="power-ring-outer-t">
+              <div class="power-ring-mid-t">
+                <div class="power-btn-t">
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <path d="M19 5V19" stroke="rgba(255,59,48,0.9)" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M11.5 10A12 12 0 1 0 26.5 10" stroke="rgba(255,59,48,0.9)" stroke-width="3" stroke-linecap="round" fill="none"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="connect-hint-t">Güvenli bağlantı için dokunun</div>
+          </div>
+
+          <div class="server-card-t">
+            <div class="srv-flag-t">🇩🇪</div>
+            <div class="srv-info-t">
+              <div class="srv-name-t">Germany — Frankfurt</div>
+              <div class="srv-sub-t">Otomatik Seçim</div>
+            </div>
+            <div class="srv-ping-t">12 ms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

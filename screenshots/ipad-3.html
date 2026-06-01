@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=820">
+<title>OptimoVPN iPad - Premium Features</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 820px;
+    height: 1180px;
+    overflow: hidden;
+    font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    background: linear-gradient(160deg, #0D1228 0%, #060A18 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+  .blob-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,208,0,0.13) 0%, transparent 70%);
+    top: -140px; left: -80px;
+  }
+  .blob-2 {
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(97,133,255,0.18) 0%, transparent 70%);
+    top: 60px; right: -80px;
+  }
+  .blob-3 {
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(255,208,0,0.1) 0%, transparent 70%);
+    bottom: -60px; right: 80px;
+  }
+  .blob-4 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(97,133,255,0.12) 0%, transparent 70%);
+    bottom: 100px; left: -40px;
+  }
+
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .star { position: absolute; width: 2px; height: 2px; background: rgba(255,255,255,0.45); border-radius: 50%; }
+
+  .layout {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 80px 60px;
+    gap: 50px;
+  }
+
+  /* LEFT */
+  .left-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFD000;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow-dot { width: 6px; height: 6px; background: #FFD000; border-radius: 50%; }
+
+  .headline {
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+    line-height: 1.08;
+    margin-bottom: 20px;
+    text-shadow: 0 0 60px rgba(255,208,0,0.3);
+  }
+
+  .subtitle {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    margin-bottom: 36px;
+    max-width: 310px;
+  }
+
+  /* Feature cards */
+  .feature-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .feat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 16px 18px;
+  }
+  .feat-icon-wrap {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .ic-gold  { background: rgba(255,208,0,0.15); }
+  .ic-blue  { background: rgba(97,133,255,0.15); }
+  .ic-green { background: rgba(47,212,135,0.12); }
+  .ic-purple{ background: rgba(160,100,255,0.12); }
+
+  .feat-text { flex: 1; }
+  .feat-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3px;
+  }
+  .feat-desc { font-size: 12px; color: rgba(255,255,255,0.42); line-height: 1.35; }
+
+  .feat-badge {
+    background: rgba(47,212,135,0.15);
+    border: 1px solid rgba(47,212,135,0.3);
+    color: #2FD487;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  /* Trial pill */
+  .trial-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(255,208,0,0.2) 0%, rgba(255,160,0,0.12) 100%);
+    border: 1px solid rgba(255,208,0,0.4);
+    border-radius: 40px;
+    padding: 14px 28px;
+    width: fit-content;
+  }
+  .trial-text {
+    font-size: 16px;
+    font-weight: 800;
+    color: #FFD000;
+    letter-spacing: 0.5px;
+  }
+  .trial-sub { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+  /* RIGHT */
+  .right-col {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tablet-frame {
+    width: 320px;
+    height: 880px;
+    background: #080D1C;
+    border-radius: 40px;
+    border: 2px solid rgba(255,208,0,0.28);
+    box-shadow:
+      0 0 0 8px rgba(255,208,0,0.05),
+      0 40px 100px rgba(0,0,0,0.75),
+      0 0 70px rgba(255,208,0,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .tablet-top-bar {
+    height: 28px;
+    background: #050810;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .tablet-cam { width: 8px; height: 8px; background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; }
+
+  .tablet-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px 16px;
+    overflow: hidden;
+  }
+  .tablet-status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Crown header */
+  .crown-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+  .crown-wrap {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,208,0,0.28) 0%, rgba(255,160,0,0.18) 100%);
+    border: 2px solid rgba(255,208,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 24px rgba(255,208,0,0.25);
+  }
+  .crown-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3px;
+  }
+  .crown-sub {
+    font-size: 9px;
+    color: #FFD000;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* Plan cards inside tablet */
+  .t-plan-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+  .t-plan-card {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 11px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .t-plan-card.featured {
+    background: rgba(255,208,0,0.07);
+    border-color: rgba(255,208,0,0.35);
+  }
+  .popular-badge {
+    position: absolute;
+    top: 0; right: 0;
+    background: #FFD000;
+    color: #0D1228;
+    font-size: 7px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 0 0 0 9px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .t-plan-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.88); }
+  .t-plan-desc { font-size: 9px; color: rgba(255,255,255,0.38); margin-top: 2px; }
+  .t-price-amount { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.9); text-align: right; }
+  .t-plan-card.featured .t-price-amount { color: #FFD000; }
+  .t-price-period { font-size: 8px; color: rgba(255,255,255,0.35); text-align: right; }
+
+  /* CTA */
+  .t-cta-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #FFD000 0%, #FFA500 100%);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #0D1228;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 20px rgba(255,208,0,0.28);
+    flex-shrink: 0;
+  }
+  .t-cta-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 7px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <div class="stars">
+    <div class="star" style="top:4%;left:12%"></div>
+    <div class="star" style="top:9%;left:50%"></div>
+    <div class="star" style="top:15%;left:82%"></div>
+    <div class="star" style="top:26%;left:28%"></div>
+    <div class="star" style="top:40%;left:88%"></div>
+    <div class="star" style="top:55%;left:4%"></div>
+    <div class="star" style="top:63%;left:62%"></div>
+    <div class="star" style="top:72%;left:80%"></div>
+    <div class="star" style="top:81%;left:20%"></div>
+    <div class="star" style="top:88%;left:72%"></div>
+    <div class="star" style="top:95%;left:42%"></div>
+    <div class="star" style="top:7%;left:38%;width:3px;height:3px;background:rgba(255,208,0,0.55)"></div>
+    <div class="star" style="top:46%;left:74%;width:3px;height:3px;background:rgba(97,133,255,0.5)"></div>
+    <div class="star" style="top:83%;left:55%;width:3px;height:3px;background:rgba(47,212,135,0.45)"></div>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT -->
+    <div class="left-col">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> OptimoVPN Pro</div>
+      <div class="headline">Premium<br>Features</div>
+      <div class="subtitle">Everything you need for complete digital freedom and maximum privacy.</div>
+
+      <div class="feature-cards">
+        <div class="feat-card">
+          <div class="feat-icon-wrap ic-gold">🌍</div>
+          <div class="feat-text">
+            <div class="feat-title">Unlimited Servers</div>
+            <div class="feat-desc">Access all 30+ countries with no restrictions</div>
+          </div>
+          <div class="feat-badge">PRO</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon-wrap ic-blue">⚡️</div>
+          <div class="feat-text">
+            <div class="feat-title">Ultra-Fast Speed</div>
+            <div class="feat-desc">No throttling — 10Gbps premium servers</div>
+          </div>
+          <div class="feat-badge">PRO</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon-wrap ic-green">🛡️</div>
+          <div class="feat-text">
+            <div class="feat-title">Kill Switch</div>
+            <div class="feat-desc">Auto-protect if connection drops</div>
+          </div>
+          <div class="feat-badge">PRO</div>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon-wrap ic-purple">📱</div>
+          <div class="feat-text">
+            <div class="feat-title">5 Devices</div>
+            <div class="feat-desc">Use on iPhone, iPad, and Mac simultaneously</div>
+          </div>
+          <div class="feat-badge">PRO</div>
+        </div>
+      </div>
+
+      <div class="trial-pill">
+        <div>
+          <div class="trial-text">7-Day Free Trial</div>
+          <div class="trial-sub">Cancel anytime • No commitment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — Tablet -->
+    <div class="right-col">
+      <div class="tablet-frame">
+        <div class="tablet-top-bar"><div class="tablet-cam"></div></div>
+        <div class="tablet-content">
+          <div class="tablet-status-bar">
+            <span>9:41 AM</span>
+            <span>●●● WiFi</span>
+          </div>
+
+          <div class="crown-area">
+            <div class="crown-wrap">👑</div>
+            <div class="crown-title">OptimoVPN Premium</div>
+            <div class="crown-sub">Unlock All Features</div>
+          </div>
+
+          <div class="t-plan-cards">
+            <div class="t-plan-card">
+              <div>
+                <div class="t-plan-name">Monthly</div>
+                <div class="t-plan-desc">Billed monthly</div>
+              </div>
+              <div>
+                <div class="t-price-amount">$4.99</div>
+                <div class="t-price-period">/ month</div>
+              </div>
+            </div>
+
+            <div class="t-plan-card featured">
+              <div class="popular-badge">Best Value</div>
+              <div>
+                <div class="t-plan-name">Yearly</div>
+                <div class="t-plan-desc">Save 67%</div>
+              </div>
+              <div>
+                <div class="t-price-amount">$1.67</div>
+                <div class="t-price-period">/ month</div>
+              </div>
+            </div>
+
+            <div class="t-plan-card">
+              <div>
+                <div class="t-plan-name">Lifetime</div>
+                <div class="t-plan-desc">One-time payment</div>
+              </div>
+              <div>
+                <div class="t-price-amount">$29.99</div>
+                <div class="t-price-period">forever</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="t-cta-btn">Start Free Trial — 7 Days</div>
+          <div class="t-cta-sub">Cancel anytime • No commitment</div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

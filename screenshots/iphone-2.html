@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=393">
+<title>OptimoVPN - Fully Protected</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 393px;
+    height: 852px;
+    overflow: hidden;
+    font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    background: linear-gradient(160deg, #0D1228 0%, #060A18 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+  .blob-1 {
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(47,212,135,0.18) 0%, transparent 70%);
+    top: -80px; right: -100px;
+  }
+  .blob-2 {
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(97,133,255,0.2) 0%, transparent 70%);
+    top: 80px; left: -80px;
+  }
+  .blob-3 {
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(47,212,135,0.12) 0%, transparent 70%);
+    bottom: 60px; right: 10px;
+  }
+  .blob-4 {
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(97,133,255,0.12) 0%, transparent 70%);
+    bottom: 140px; left: -20px;
+  }
+
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .star { position: absolute; width: 2px; height: 2px; background: rgba(255,255,255,0.5); border-radius: 50%; }
+
+  .header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 44px 24px 0;
+    width: 100%;
+  }
+  .headline {
+    font-size: 34px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(47,212,135,0.5);
+  }
+  .subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    letter-spacing: 0.1px;
+    line-height: 1.4;
+  }
+
+  .phone-wrapper {
+    position: relative;
+    z-index: 10;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .phone-frame {
+    width: 240px;
+    height: 488px;
+    background: #080D1C;
+    border-radius: 36px;
+    border: 1.5px solid rgba(47,212,135,0.35);
+    box-shadow:
+      0 0 0 6px rgba(47,212,135,0.07),
+      0 30px 80px rgba(0,0,0,0.7),
+      0 0 60px rgba(47,212,135,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .dynamic-island {
+    width: 72px;
+    height: 22px;
+    background: #000;
+    border-radius: 20px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
+  .phone-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px 10px;
+    position: relative;
+  }
+  .phone-status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+  .status-pill {
+    background: rgba(47,212,135,0.15);
+    border: 1px solid rgba(47,212,135,0.45);
+    color: #2FD487;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .power-btn-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+  .power-ring-outer {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(47,212,135,0.08) 0%, transparent 70%);
+    border: 1.5px dashed rgba(47,212,135,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .power-ring-mid {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: rgba(47,212,135,0.05);
+    border: 1.5px solid rgba(47,212,135,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .power-btn {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, rgba(47,212,135,0.35) 0%, rgba(20,160,90,0.5) 100%);
+    border: 1.5px solid rgba(47,212,135,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 0 24px rgba(47,212,135,0.45),
+      0 0 8px rgba(47,212,135,0.3) inset;
+  }
+  .power-icon { width: 30px; height: 30px; }
+
+  /* Stats bar */
+  .stats-bar {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 9px 8px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  .stat-item + .stat-item {
+    border-left: 1px solid rgba(255,255,255,0.07);
+  }
+  .stat-label {
+    font-size: 7px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .stat-value {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+  }
+  .stat-sub {
+    font-size: 7px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* IP row */
+  .ip-row {
+    width: 100%;
+    background: rgba(97,133,255,0.07);
+    border: 1px solid rgba(97,133,255,0.18);
+    border-radius: 10px;
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .ip-label {
+    font-size: 8px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .ip-value {
+    font-size: 10px;
+    font-weight: 600;
+    color: #6185FF;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .feature-tag {
+    position: relative;
+    z-index: 10;
+    margin-top: 16px;
+    background: linear-gradient(90deg, rgba(47,212,135,0.2) 0%, rgba(97,133,255,0.15) 100%);
+    border: 1px solid rgba(47,212,135,0.4);
+    border-radius: 30px;
+    padding: 7px 22px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <div class="stars">
+    <div class="star" style="top:6%;left:18%"></div>
+    <div class="star" style="top:12%;left:72%"></div>
+    <div class="star" style="top:25%;left:38%"></div>
+    <div class="star" style="top:34%;left:85%"></div>
+    <div class="star" style="top:45%;left:8%"></div>
+    <div class="star" style="top:55%;left:91%"></div>
+    <div class="star" style="top:63%;left:28%"></div>
+    <div class="star" style="top:71%;left:66%"></div>
+    <div class="star" style="top:82%;left:14%"></div>
+    <div class="star" style="top:88%;left:50%"></div>
+    <div class="star" style="top:18%;left:55%;width:3px;height:3px;background:rgba(47,212,135,0.6)"></div>
+    <div class="star" style="top:76%;left:80%;width:3px;height:3px;background:rgba(97,133,255,0.5)"></div>
+  </div>
+
+  <div class="header">
+    <div class="headline">Fully<br>Protected</div>
+    <div class="subtitle">Military-grade AES-256 encryption active</div>
+  </div>
+
+  <div class="phone-wrapper">
+    <div class="phone-frame">
+      <div class="dynamic-island"></div>
+      <div class="phone-content">
+
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span style="color:#2FD487">●●●</span>
+        </div>
+
+        <div class="status-pill">Korunuyor ✓</div>
+
+        <div class="power-btn-area">
+          <div class="power-ring-outer">
+            <div class="power-ring-mid">
+              <div class="power-btn">
+                <svg class="power-icon" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 4V15" stroke="rgba(47,212,135,1)" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M9 7.5A10 10 0 1 0 21 7.5" stroke="rgba(47,212,135,1)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-label">Download</div>
+            <div class="stat-value">↓ 87.4</div>
+            <div class="stat-sub">Mbps</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Upload</div>
+            <div class="stat-value">↑ 42.1</div>
+            <div class="stat-sub">Mbps</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Time</div>
+            <div class="stat-value">02:14</div>
+            <div class="stat-sub">Active</div>
+          </div>
+        </div>
+
+        <div class="ip-row">
+          <div class="ip-label">VPN IP</div>
+          <div class="ip-value">185.220.101.47</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-tag">Encrypted</div>
+
+</body>
+</html>
