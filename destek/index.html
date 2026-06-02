@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destek - OptimoVPN</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--blue:#0A84FF;--dark:#0D0D0F;--card:#1C1C1E;--text:#F2F2F7;--sub:#8E8E93}
+    body{background:var(--dark);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif}
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;border-bottom:1px solid #2C2C2E}
+    .logo{font-size:1.4rem;font-weight:700;color:var(--blue);text-decoration:none}
+    nav a{color:var(--sub);text-decoration:none;margin-left:32px;font-size:.95rem}
+    nav a:hover{color:var(--text)}
+    .page{max-width:780px;margin:0 auto;padding:60px 24px}
+    h1{font-size:2.2rem;font-weight:800;margin-bottom:12px}
+    .lead{color:var(--sub);font-size:1.1rem;margin-bottom:48px;line-height:1.6}
+    .faq{margin-bottom:16px;background:var(--card);border:1px solid #2C2C2E;border-radius:16px;overflow:hidden}
+    .faq summary{padding:20px 24px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:'+';color:var(--blue);font-size:1.4rem;font-weight:300}
+    .faq[open] summary::after{content:'-'}
+    .faq .body{padding:0 24px 20px;color:var(--sub);line-height:1.6;font-size:.95rem}
+    .contact{background:var(--card);border:1px solid #2C2C2E;border-radius:20px;padding:36px;margin-top:48px;text-align:center}
+    .contact h2{font-size:1.3rem;font-weight:700;margin-bottom:10px}
+    .contact p{color:var(--sub);margin-bottom:24px;font-size:.95rem}
+    .btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:14px 28px;border-radius:12px;font-size:.95rem;font-weight:600}
+    footer{text-align:center;padding:32px 24px;border-top:1px solid #2C2C2E;color:var(--sub);font-size:.85rem;margin-top:60px}
+    footer a{color:var(--sub);text-decoration:none;margin:0 12px}
+  </style>
+</head>
+<body>
+<header>
+  <a href="/" class="logo">OptimoVPN</a>
+  <nav>
+    <a href="/destek">Destek</a>
+    <a href="/gizlilik">Gizlilik</a>
+  </nav>
+</header>
+<div class="page">
+  <h1>Destek Merkezi</h1>
+  <p class="lead">OptimoVPN hakkinda sik sorulan sorular ve cozumler.</p>
+
+  <details class="faq">
+    <summary>OptimoVPN'e nasil baglanabilirim?</summary>
+    <div class="body">Uygulamayi acin, sunucu secin ve baglanti dugmesine basin. Otomatik mod seciliyse en iyi sunucu otomatik bulunur.</div>
+  </details>
+  <details class="faq">
+    <summary>Ucretsiz surum ne kadar sure kullanilabilir?</summary>
+    <div class="body">Ucretsiz surum gunluk 100 MB veri limiti ile kullanilabilir. Limitsiz kullanim icin Premium'a gecin.</div>
+  </details>
+  <details class="faq">
+    <summary>Hangi sunuculara baglanabilirim?</summary>
+    <div class="body">VPNGate agindaki binlerce gonullu sunucuya baglanabilirsiniz. Uygulama otomatik olarak en hizli sunucuyu bulur.</div>
+  </details>
+  <details class="faq">
+    <summary>Baglantiyi kesemedim, ne yapmaliyim?</summary>
+    <div class="body">Uygulamadan cikip tekrar acin. Sorun devam ederse Ayarlar > VPN bolumunden OptimoVPN profilini silip yeniden baglanti kurun.</div>
+  </details>
+  <details class="faq">
+    <summary>Aboneligimi nasil iptal edebilirim?</summary>
+    <div class="body">iPhone Ayarlar > Apple Hesabim > Abonelikler > OptimoVPN yolunu izleyerek aboneliginizi iptal edebilirsiniz.</div>
+  </details>
+  <details class="faq">
+    <summary>Verilerim guvende mi?</summary>
+    <div class="body">Evet. Herhangi bir kullanici aktivitesi kaydetmiyoruz. Gizlilik politikamiz icin ilgili sayfayi ziyaret edin.</div>
+  </details>
+
+  <div class="contact">
+    <h2>Hala yardima mi ihtiyaciniz var?</h2>
+    <p>E-posta ile bize ulasin, en kisa surede yanit verelim.</p>
+    <a href="mailto:destek@optimovpn.app" class="btn">destek@optimovpn.app</a>
+  </div>
+</div>
+<footer>
+  <p><a href="/">Ana Sayfa</a><a href="/gizlilik">Gizlilik Politikasi</a></p>
+  <p style="margin-top:12px">&copy; 2025 OptimoVPN</p>
+</footer>
+</body>
+</html>
